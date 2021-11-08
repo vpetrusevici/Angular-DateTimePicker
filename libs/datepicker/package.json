@@ -1,6 +1,6 @@
 {
-  "name": "@matheo/datepicker",
-  "version": "13.0.0.beta.0",
+  "name": "@vpetrusevici/datepicker",
+  "version": "13.0.0",
   "description": "Angular material date+time picker",
   "keywords": [
     "angular",
@@ -23,8 +23,6 @@
     "@angular/core": ">=13.0.0",
     "@angular/forms": ">=13.0.0",
     "@angular/material": ">=13.0.0",
-    "date-fns": "^2.23.0",
-    "date-fns-tz": "^1.1.6",
     "luxon": "^2.0.2",
     "rxjs": "*"
   },

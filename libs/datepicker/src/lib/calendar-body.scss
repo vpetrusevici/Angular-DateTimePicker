@@ -1,12 +1,12 @@
-@use '@angular/cdk' as cdk;
-@import '@angular/material/theming';
+@use "@angular/cdk" as cdk;
+@import "@angular/material/theming";
 
 $mat-calendar-body-label-padding-start: 5% !default;
 // We don't want the label to jump around when we switch between month and year views, so we use
 // the same amount of padding regardless of the number of columns. We align the header label with
 // the one third mark of the first cell, this was chosen somewhat arbitrarily to make it look
 // roughly like the mock. Half way is too far since the cell text is center aligned.
-$mat-calendar-body-label-side-padding: 33% / 7 !default;
+$mat-calendar-body-label-side-padding: math.div(33%, 7) !default;
 $mat-calendar-body-cell-min-size: 32px !default;
 $mat-calendar-body-cell-content-margin: 5% !default;
 $mat-calendar-body-cell-content-border-width: 1px !default;
@@ -14,11 +14,9 @@ $mat-calendar-body-cell-radius: 999px !default;
 $mat-calendar-body-preview-cell-border: dashed 1px;
 
 $mat-calendar-body-min-size: 7 * $mat-calendar-body-cell-min-size !default;
-$mat-calendar-body-cell-content-size: 100% -
-  $mat-calendar-body-cell-content-margin * 2 !default;
+$mat-calendar-body-cell-content-size: 100% - $mat-calendar-body-cell-content-margin * 2 !default;
 
-$mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
-  $mat-calendar-body-cell-content-margin !default;
+$mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size + $mat-calendar-body-cell-content-margin !default;
 
 .mat-calendar-body {
   min-width: $mat-calendar-body-min-size;
@@ -53,7 +51,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
 .mat-calendar-body-cell::before,
 .mat-calendar-body-cell::after,
 .mat-calendar-body-cell-preview {
-  content: '';
+  content: "";
   position: absolute;
   top: $mat-calendar-body-cell-content-margin;
   left: 0;
@@ -78,7 +76,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
   border-top-left-radius: $mat-calendar-body-cell-radius;
   border-bottom-left-radius: $mat-calendar-body-cell-radius;
 
-  [dir='rtl'] & {
+  [dir="rtl"] & {
     left: 0;
     border-radius: 0;
     border-top-right-radius: $mat-calendar-body-cell-radius;
@@ -101,7 +99,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
 .mat-calendar-body-preview-end .mat-calendar-body-cell-preview {
   @include _mat-calendar-body-range-right-radius;
 
-  [dir='rtl'] & {
+  [dir="rtl"] & {
     left: $mat-calendar-body-cell-content-margin;
     border-radius: 0;
     border-top-left-radius: $mat-calendar-body-cell-radius;
@@ -110,7 +108,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
 }
 
 // Styles necessary to make RTL work.
-[dir='rtl'] {
+[dir="rtl"] {
   .mat-calendar-body-comparison-bridge-start.mat-calendar-body-range-end::after,
   .mat-calendar-body-comparison-bridge-end.mat-calendar-body-range-start::after {
     @include _mat-calendar-body-range-right-radius;
@@ -123,7 +121,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
   // Note that the RTL selector here is redundant, but we need to keep it in order to
   // raise the specificity since it can be overridden by some of the styles from above.
   &,
-  [dir='rtl'] & {
+  [dir="rtl"] & {
     width: $mat-calendar-body-cell-content-size;
   }
 }
@@ -136,7 +134,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
 .mat-calendar-body-preview-start .mat-calendar-body-cell-preview {
   border-left: $mat-calendar-body-preview-cell-border;
 
-  [dir='rtl'] & {
+  [dir="rtl"] & {
     border-left: 0;
     border-right: $mat-calendar-body-preview-cell-border;
   }
@@ -145,7 +143,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
 .mat-calendar-body-preview-end .mat-calendar-body-cell-preview {
   border-right: $mat-calendar-body-preview-cell-border;
 
-  [dir='rtl'] & {
+  [dir="rtl"] & {
     border-right: 0;
     border-left: $mat-calendar-body-preview-cell-border;
   }
@@ -219,7 +217,7 @@ $mat-calendar-range-end-body-cell-size: $mat-calendar-body-cell-content-size +
   }
 }
 
-[dir='rtl'] {
+[dir="rtl"] {
   .mat-calendar-body-label {
     text-align: right;
   }
