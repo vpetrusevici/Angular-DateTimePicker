@@ -1,4 +1,5 @@
 @use "@angular/cdk" as cdk;
+@use "sass:math";
 @import "@angular/material/theming";
 
 $mat-calendar-body-label-padding-start: 5% !default;

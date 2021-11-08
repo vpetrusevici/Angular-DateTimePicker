@@ -15,10 +15,8 @@
     "module": "esnext",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@matheo/datasource": ["libs/datasource/src/index.ts"],
       "@matheo/datepicker": ["libs/datepicker/src/index.ts"],
-      "@matheo/datepicker/*": ["libs/datepicker/*"],
-      "@matheo/schematics": ["libs/schematics/src/index.ts"]
+      "@matheo/datepicker/*": ["libs/datepicker/src/*"]
     },
     "plugins": [
       {
