@@ -180,7 +180,7 @@ export class LuxonDateAdapter extends DateAdapter<DateTime> {
   }
 
   clone(date: DateTime): DateTime {
-    return DateTime.fromObject(date.toObject({ includeConfig: true }));
+    return date;
   }
 
   createDate(
