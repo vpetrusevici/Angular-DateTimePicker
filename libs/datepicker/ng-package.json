@@ -4,5 +4,9 @@
   "lib": {
     "entryFile": "src/index.ts"
   },
-  "allowedNonPeerDependencies": [".*"]
+  "allowedNonPeerDependencies": [".*"],
+  "assets": [
+    "**/_datepicker-theme.scss",
+    "**/prebuilt-themes/**.scss"
+  ]
 }
