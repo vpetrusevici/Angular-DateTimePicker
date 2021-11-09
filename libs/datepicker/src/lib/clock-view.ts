@@ -13,14 +13,14 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import {MAT_DATE_FORMATS} from '@angular/material/core';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
 import {
   DateAdapter,
   MatDateFormats,
-} from '@matheo/datepicker/core';
-import {MatCalendarCellClassFunction, MatCalendarUserEvent} from './calendar-body';
-import {createMissingDateImplError} from './datepicker-errors';
-import {DateFilterFn} from './datepicker-input-base';
+} from '../core';
+import { MatCalendarCellClassFunction, MatCalendarUserEvent } from './calendar-body';
+import { createMissingDateImplError } from './datepicker-errors';
+import { DateFilterFn } from './datepicker-input-base';
 
 export const CLOCK_RADIUS = 50;
 export const CLOCK_INNER_RADIUS = 27.5;
@@ -387,7 +387,7 @@ export class MatClockView<D> implements AfterViewInit, AfterContentInit {
     this.selectedChange.emit(this.activeDate);
   }
 
-  _focusActiveCell() {}
+  _focusActiveCell() { }
 
   /**
    * @param obj The object to check.

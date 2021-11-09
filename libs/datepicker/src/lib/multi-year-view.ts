@@ -32,19 +32,19 @@ import {
   OnDestroy,
   isDevMode,
 } from '@angular/core';
-import {Directionality} from '@angular/cdk/bidi';
-import {DateAdapter} from '@matheo/datepicker/core';
+import { Directionality } from '@angular/cdk/bidi';
+import { DateAdapter } from '../core';
 import {
   MatCalendarBody,
   MatCalendarCell,
   MatCalendarUserEvent,
   MatCalendarCellClassFunction,
 } from './calendar-body';
-import {createMissingDateImplError} from './datepicker-errors';
-import {Subscription} from 'rxjs';
-import {startWith} from 'rxjs/operators';
-import {DateRange} from './date-selection-model';
-import {DateFilterFn} from './datepicker-input-base';
+import { createMissingDateImplError } from './datepicker-errors';
+import { Subscription } from 'rxjs';
+import { startWith } from 'rxjs/operators';
+import { DateRange } from './date-selection-model';
+import { DateFilterFn } from './datepicker-input-base';
 
 /**
  * An internal component used to display a year selector in the datepicker.
@@ -142,8 +142,8 @@ export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
   _selectedYear: number | null;
 
   constructor(private _changeDetectorRef: ChangeDetectorRef,
-              @Optional() public _dateAdapter: DateAdapter<D>,
-              @Optional() private _dir?: Directionality) {
+    @Optional() public _dateAdapter: DateAdapter<D>,
+    @Optional() private _dir?: Directionality) {
     if (!this._dateAdapter && isDevMode()) {
       throw createMissingDateImplError('DateAdapter');
     }
@@ -191,7 +191,7 @@ export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
     const year = event.value;
     const month = this._dateAdapter.getMonth(this.activeDate);
     const daysInMonth =
-        this._dateAdapter.getNumDaysInMonth(this._dateAdapter.createDate(year, month, 1));
+      this._dateAdapter.getNumDaysInMonth(this._dateAdapter.createDate(year, month, 1));
     const day = Math.min(this._dateAdapter.getDate(this.activeDate), daysInMonth);
 
     const activeDate = this._dateAdapter.createDate(
@@ -238,17 +238,17 @@ export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
         break;
       case PAGE_UP:
         this.activeDate =
-            this._dateAdapter.addCalendarYears(
-                this._activeDate, event.altKey ? -this.yearsPerPage * 10 : -this.yearsPerPage);
+          this._dateAdapter.addCalendarYears(
+            this._activeDate, event.altKey ? -this.yearsPerPage * 10 : -this.yearsPerPage);
         break;
       case PAGE_DOWN:
         this.activeDate =
-            this._dateAdapter.addCalendarYears(
-                this._activeDate, event.altKey ? this.yearsPerPage * 10 : this.yearsPerPage);
+          this._dateAdapter.addCalendarYears(
+            this._activeDate, event.altKey ? this.yearsPerPage * 10 : this.yearsPerPage);
         break;
       case ENTER:
       case SPACE:
-        this._yearSelected({value: this._dateAdapter.getYear(this._activeDate), event});
+        this._yearSelected({ value: this._dateAdapter.getYear(this._activeDate), event });
         break;
       default:
         // Don't prevent default or focus active cell on keys that we don't explicitly handle.
@@ -285,8 +285,8 @@ export class MatMultiYearView<D> implements AfterContentInit, OnDestroy {
   private _shouldEnableYear(year: number) {
     // disable if the year is greater than maxDate lower than minDate
     if (year === undefined || year === null ||
-        (this.maxDate && year > this._dateAdapter.getYear(this.maxDate)) ||
-        (this.minDate && year < this._dateAdapter.getYear(this.minDate))) {
+      (this.maxDate && year > this._dateAdapter.getYear(this.maxDate)) ||
+      (this.minDate && year < this._dateAdapter.getYear(this.minDate))) {
       return false;
     }
 
@@ -335,7 +335,7 @@ export function isSameMultiYearView<D>(
   const year2 = dateAdapter.getYear(date2);
   const startingYear = getStartingYear(dateAdapter, minDate, maxDate, yearsPerPage);
   return Math.floor((year1 - startingYear) / yearsPerPage) ===
-          Math.floor((year2 - startingYear) / yearsPerPage);
+    Math.floor((year2 - startingYear) / yearsPerPage);
 }
 
 /**
@@ -367,6 +367,6 @@ function getStartingYear<D>(
 }
 
 /** Gets remainder that is non-negative, even if first number is negative */
-function euclideanModulo (a: number, b: number): number {
+function euclideanModulo(a: number, b: number): number {
   return (a % b + b) % b;
 }

@@ -6,9 +6,9 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {FactoryProvider, Injectable, Optional, SkipSelf, OnDestroy, Directive, isDevMode} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {DateAdapter} from '@matheo/datepicker/core';
+import { FactoryProvider, Injectable, Optional, SkipSelf, OnDestroy, Directive, isDevMode } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { DateAdapter } from '../core';
 
 /** A class representing a range of dates. */
 export class DateRange<D> {
@@ -23,7 +23,7 @@ export class DateRange<D> {
     /** The start date of the range. */
     readonly start: D | null,
     /** The end date of the range. */
-    readonly end: D | null) {}
+    readonly end: D | null) { }
 }
 
 /**
@@ -45,7 +45,7 @@ export interface DateSelectionModelChange<S> {
 // @dynamic
 @Directive()
 export abstract class MatDateSelectionModel<S, D = ExtractDateTypeFromSelection<S>>
-    implements OnDestroy {
+  implements OnDestroy {
   private _selectionChanged = new Subject<DateSelectionModelChange<S>>();
 
   /** Emits when the selection has changed. */
@@ -64,8 +64,8 @@ export abstract class MatDateSelectionModel<S, D = ExtractDateTypeFromSelection<
    * @param source Object that triggered the selection change.
    */
   updateSelection(value: S, source: unknown) {
-    (this as {selection: S}).selection = value;
-    this._selectionChanged.next({selection: value, source});
+    (this as { selection: S }).selection = value;
+    this._selectionChanged.next({ selection: value, source });
   }
 
   ngOnDestroy() {
@@ -169,7 +169,7 @@ export class MatRangeDateSelectionModel<D> extends MatDateSelectionModel<DateRan
    * the selection is reset so that the given date is the new `start` and the `end` is null.
    */
   add(date: D | null): void {
-    let {start, end} = this.selection;
+    let { start, end } = this.selection;
 
     if (start == null) {
       start = date;
@@ -183,12 +183,12 @@ export class MatRangeDateSelectionModel<D> extends MatDateSelectionModel<DateRan
     super.updateSelection(new DateRange<D>(start, end), this);
   }
 
-  queue(date: D | null) {}
-  processQueue() {}
+  queue(date: D | null) { }
+  processQueue() { }
 
   /** Checks whether the current selection is valid. */
   isValid(): boolean {
-    const {start, end} = this.selection;
+    const { start, end } = this.selection;
 
     // Empty ranges are valid.
     if (start == null && end == null) {
@@ -198,12 +198,12 @@ export class MatRangeDateSelectionModel<D> extends MatDateSelectionModel<DateRan
     // Complete ranges are only valid if both dates are valid and the start is before the end.
     if (start != null && end != null) {
       return this._isValidDateInstance(start) && this._isValidDateInstance(end) &&
-             this._adapter.compareDate(start, end) <= 0;
+        this._adapter.compareDate(start, end) <= 0;
     }
 
     // Partial ranges are valid if the start/end is valid.
     return (start == null || this._isValidDateInstance(start)) &&
-           (end == null || this._isValidDateInstance(end));
+      (end == null || this._isValidDateInstance(end));
   }
 
   /**
@@ -224,7 +224,7 @@ export class MatRangeDateSelectionModel<D> extends MatDateSelectionModel<DateRan
 
 /** @docs-private */
 export function MAT_SINGLE_DATE_SELECTION_MODEL_FACTORY(
-    parent: MatSingleDateSelectionModel<unknown>, adapter: DateAdapter<unknown>) {
+  parent: MatSingleDateSelectionModel<unknown>, adapter: DateAdapter<unknown>) {
   return parent || new MatSingleDateSelectionModel(adapter);
 }
 
@@ -238,7 +238,7 @@ export const MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER: FactoryProvider = {
 
 /** @docs-private */
 export function MAT_RANGE_DATE_SELECTION_MODEL_FACTORY(
-    parent: MatSingleDateSelectionModel<unknown>, adapter: DateAdapter<unknown>) {
+  parent: MatSingleDateSelectionModel<unknown>, adapter: DateAdapter<unknown>) {
   return parent || new MatRangeDateSelectionModel(adapter);
 }
 

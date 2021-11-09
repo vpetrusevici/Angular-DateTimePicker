@@ -24,7 +24,7 @@ export {
   DatepickerDropdownPositionX,
   DatepickerDropdownPositionY,
 } from './datepicker-base';
-export {MatDatepickerInputEvent, DateFilterFn} from './datepicker-input-base';
+export { MatDatepickerInputEvent, DateFilterFn } from './datepicker-input-base';
 export {
   MAT_DATEPICKER_VALUE_ACCESSOR,
   MAT_DATEPICKER_VALIDATORS,
@@ -36,8 +36,9 @@ export * from './clock-view';
 export * from './month-view';
 export * from './year-view';
 export * from './date-range-input';
-export {MatDateRangePicker} from './date-range-picker';
+export { MatDateRangePicker } from './date-range-picker';
 export * from './date-selection-model';
-export {MatStartDate, MatEndDate} from './date-range-input-parts';
-export {MatMultiYearView} from './multi-year-view';
+export { MatStartDate, MatEndDate } from './date-range-input-parts';
+export { MatMultiYearView } from './multi-year-view';
 export * from './datepicker-actions';
+export * from '../luxon'

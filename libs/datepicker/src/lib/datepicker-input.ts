@@ -21,17 +21,17 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import {MAT_DATE_FORMATS, ThemePalette} from '@angular/material/core';
-import {MatFormField, MAT_FORM_FIELD} from '@angular/material/form-field';
-import {MAT_INPUT_VALUE_ACCESSOR} from '@angular/material/input';
-import {Subscription} from 'rxjs';
+import { MAT_DATE_FORMATS, ThemePalette } from '@angular/material/core';
+import { MatFormField, MAT_FORM_FIELD } from '@angular/material/form-field';
+import { MAT_INPUT_VALUE_ACCESSOR } from '@angular/material/input';
+import { Subscription } from 'rxjs';
 import {
   DateAdapter,
   MatDateFormats,
-} from '@matheo/datepicker/core';
-import {DateFilterFn, MatDatepickerInputBase} from './datepicker-input-base';
-import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
-import {DateSelectionModelChange} from './date-selection-model';
+} from '../core';
+import { DateFilterFn, MatDatepickerInputBase } from './datepicker-input-base';
+import { MatDatepickerControl, MatDatepickerPanel } from './datepicker-base';
+import { DateSelectionModelChange } from './date-selection-model';
 
 /** @docs-private */
 export const MAT_DATEPICKER_VALUE_ACCESSOR: any = {
@@ -53,7 +53,7 @@ export const MAT_DATEPICKER_VALIDATORS: any = {
   providers: [
     MAT_DATEPICKER_VALUE_ACCESSOR,
     MAT_DATEPICKER_VALIDATORS,
-    {provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: MatDatepickerInput},
+    { provide: MAT_INPUT_VALUE_ACCESSOR, useExisting: MatDatepickerInput },
   ],
   host: {
     'class': 'mat-datepicker-input',
@@ -130,10 +130,10 @@ export class MatDatepickerInput<D> extends MatDatepickerInputBase<D | null, D>
   protected _validator: ValidatorFn | null;
 
   constructor(
-      elementRef: ElementRef<HTMLInputElement>,
-      @Optional() dateAdapter: DateAdapter<D>,
-      @Optional() @Inject(MAT_DATE_FORMATS) dateFormats: MatDateFormats,
-      @Optional() @Inject(MAT_FORM_FIELD) private _formField: MatFormField) {
+    elementRef: ElementRef<HTMLInputElement>,
+    @Optional() dateAdapter: DateAdapter<D>,
+    @Optional() @Inject(MAT_DATE_FORMATS) dateFormats: MatDateFormats,
+    @Optional() @Inject(MAT_FORM_FIELD) private _formField: MatFormField) {
     super(elementRef, dateAdapter, dateFormats);
     this._validator = Validators.compose(super._getValidators());
   }

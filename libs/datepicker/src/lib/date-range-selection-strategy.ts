@@ -6,13 +6,13 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {Injectable, InjectionToken, Optional, SkipSelf, FactoryProvider} from '@angular/core';
-import {DateAdapter} from '@matheo/datepicker/core';
-import {DateRange} from './date-selection-model';
+import { Injectable, InjectionToken, Optional, SkipSelf, FactoryProvider } from '@angular/core';
+import { DateAdapter } from '../core';
+import { DateRange } from './date-selection-model';
 
 /** Injection token used to customize the date range selection behavior. */
 export const MAT_DATE_RANGE_SELECTION_STRATEGY =
-    new InjectionToken<MatDateRangeSelectionStrategy<any>>('MAT_DATE_RANGE_SELECTION_STRATEGY');
+  new InjectionToken<MatDateRangeSelectionStrategy<any>>('MAT_DATE_RANGE_SELECTION_STRATEGY');
 
 /** Object that can be provided in order to customize the date range selection behavior. */
 export interface MatDateRangeSelectionStrategy<D> {
@@ -41,10 +41,10 @@ export interface MatDateRangeSelectionStrategy<D> {
 /** Provides the default date range selection behavior. */
 @Injectable()
 export class DefaultMatCalendarRangeStrategy<D> implements MatDateRangeSelectionStrategy<D> {
-  constructor(private _dateAdapter: DateAdapter<D>) {}
+  constructor(private _dateAdapter: DateAdapter<D>) { }
 
   selectionFinished(date: D, currentRange: DateRange<D>) {
-    let {start, end} = currentRange;
+    let { start, end } = currentRange;
 
     if (start == null) {
       start = date;

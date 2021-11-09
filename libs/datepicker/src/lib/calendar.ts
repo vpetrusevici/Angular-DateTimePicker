@@ -6,7 +6,7 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {ComponentPortal, ComponentType, Portal} from '@angular/cdk/portal';
+import { ComponentPortal, ComponentType, Portal } from '@angular/cdk/portal';
 import {
   AfterContentInit,
   AfterViewChecked,
@@ -27,28 +27,28 @@ import {
   ViewEncapsulation,
   isDevMode,
 } from '@angular/core';
-import {MAT_DATE_FORMATS, ThemePalette} from '@angular/material/core';
-import {Subject, Subscription} from 'rxjs';
+import { MAT_DATE_FORMATS, ThemePalette } from '@angular/material/core';
+import { Subject, Subscription } from 'rxjs';
 import {
   DateAdapter,
   DateUnit,
   MatDateFormats,
-} from '@matheo/datepicker/core';
-import {MatCalendarUserEvent, MatCalendarCellClassFunction} from './calendar-body';
-import {MatCalendarType, MatCalendarView} from './calendar.types';
-import {matDatepickerAnimations} from './datepicker-animations';
-import {createMissingDateImplError} from './datepicker-errors';
-import {MatDatepickerIntl} from './datepicker-intl';
-import {DateFilterFn} from './datepicker-input-base';
-import {MatClockView} from './clock-view';
-import {MatMonthView} from './month-view';
+} from '../core';
+import { MatCalendarUserEvent, MatCalendarCellClassFunction } from './calendar-body';
+import { MatCalendarType, MatCalendarView } from './calendar.types';
+import { matDatepickerAnimations } from './datepicker-animations';
+import { createMissingDateImplError } from './datepicker-errors';
+import { MatDatepickerIntl } from './datepicker-intl';
+import { DateFilterFn } from './datepicker-input-base';
+import { MatClockView } from './clock-view';
+import { MatMonthView } from './month-view';
 import {
   getActiveOffset,
   isSameMultiYearView,
   MatMultiYearView,
 } from './multi-year-view';
-import {MatYearView} from './year-view';
-import {MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER, DateRange} from './date-selection-model';
+import { MatYearView } from './year-view';
+import { MAT_SINGLE_DATE_SELECTION_MODEL_PROVIDER, DateRange } from './date-selection-model';
 
 /** Counter used to generate unique IDs. */
 let uniqueId = 0;
@@ -84,10 +84,10 @@ export class MatCalendarHeader<D> {
   _isAM: boolean;
 
   constructor(public _intl: MatDatepickerIntl,
-              @Inject(forwardRef(() => MatCalendar)) public calendar: MatCalendar<D>,
-              @Optional() private _dateAdapter: DateAdapter<D>,
-              @Optional() @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
-              private changeDetectorRef: ChangeDetectorRef) {
+    @Inject(forwardRef(() => MatCalendar)) public calendar: MatCalendar<D>,
+    @Optional() private _dateAdapter: DateAdapter<D>,
+    @Optional() @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
+    private changeDetectorRef: ChangeDetectorRef) {
 
     this.updateValues();
     this.calendar.stateChanges.subscribe(() => this.updateValues());
@@ -139,8 +139,8 @@ export class MatCalendarHeader<D> {
   get periodButtonText(): string {
     if (this.calendar.currentView == 'month') {
       return this._dateAdapter
-          .format(this.calendar.activeDate, this._dateFormats.display.monthYearLabel)
-              .toLocaleUpperCase();
+        .format(this.calendar.activeDate, this._dateFormats.display.monthYearLabel)
+        .toLocaleUpperCase();
     }
     if (this.calendar.currentView == 'year') {
       return this._dateAdapter.getYearName(this.calendar.activeDate);
@@ -208,9 +208,9 @@ export class MatCalendarHeader<D> {
     const date = this.calendar.currentView == 'month'
       ? this._dateAdapter.addCalendarMonths(this.calendar.activeDate, -1)
       : this._dateAdapter.addCalendarYears(
-          this.calendar.activeDate,
-          this.calendar.currentView == 'year' ? -1 : -this.calendar.yearsPerPage
-        );
+        this.calendar.activeDate,
+        this.calendar.currentView == 'year' ? -1 : -this.calendar.yearsPerPage
+      );
 
     this.calendar.setDate(date);
   }
@@ -220,9 +220,9 @@ export class MatCalendarHeader<D> {
     const date = this.calendar.currentView == 'month'
       ? this._dateAdapter.addCalendarMonths(this.calendar.activeDate, 1)
       : this._dateAdapter.addCalendarYears(
-          this.calendar.activeDate,
-          this.calendar.currentView == 'year' ? 1 : this.calendar.yearsPerPage
-        );
+        this.calendar.activeDate,
+        this.calendar.currentView == 'year' ? 1 : this.calendar.yearsPerPage
+      );
 
     this.calendar.setDate(date);
   }
@@ -233,20 +233,20 @@ export class MatCalendarHeader<D> {
       return true;
     }
     return !this.calendar.minDate ||
-        !this._isSameView(this.calendar.activeDate, this.calendar.minDate);
+      !this._isSameView(this.calendar.activeDate, this.calendar.minDate);
   }
 
   /** Whether the next period button is enabled. */
   nextEnabled(): boolean {
     return !this.calendar.maxDate ||
-        !this._isSameView(this.calendar.activeDate, this.calendar.maxDate);
+      !this._isSameView(this.calendar.activeDate, this.calendar.maxDate);
   }
 
   /** Whether the two dates represent the same view in the current view mode (month or year). */
   private _isSameView(date1: D, date2: D): boolean {
     if (this.calendar.currentView == 'month') {
       return this._dateAdapter.getYear(date1) == this._dateAdapter.getYear(date2) &&
-          this._dateAdapter.getMonth(date1) == this._dateAdapter.getMonth(date2);
+        this._dateAdapter.getMonth(date1) == this._dateAdapter.getMonth(date2);
     }
     if (this.calendar.currentView == 'year') {
       return this._dateAdapter.getYear(date1) == this._dateAdapter.getYear(date2);
@@ -385,7 +385,7 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
 
   /** Emits when any date is selected. */
   @Output() readonly _userSelection: EventEmitter<MatCalendarUserEvent<D | null>> =
-      new EventEmitter<MatCalendarUserEvent<D | null>>();
+    new EventEmitter<MatCalendarUserEvent<D | null>>();
 
   /** Reference to the current clock view component. */
   @ViewChild(MatClockView) clockView: MatClockView<D>;
@@ -430,9 +430,9 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
   stateChanges = new Subject<void>();
 
   constructor(_intl: MatDatepickerIntl,
-              @Optional() private _dateAdapter: DateAdapter<D>,
-              @Optional() @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
-              private _changeDetectorRef: ChangeDetectorRef) {
+    @Optional() private _dateAdapter: DateAdapter<D>,
+    @Optional() @Inject(MAT_DATE_FORMATS) private _dateFormats: MatDateFormats,
+    private _changeDetectorRef: ChangeDetectorRef) {
 
     if (isDevMode()) {
       if (!this._dateAdapter) {
@@ -479,7 +479,7 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
 
   ngOnChanges(changes: SimpleChanges) {
     const change =
-        changes['minDate'] || changes['maxDate'] || changes['dateFilter'];
+      changes['minDate'] || changes['maxDate'] || changes['dateFilter'];
 
     if (change && !change.firstChange) {
       const view = this._getCurrentViewComponent();
@@ -553,7 +553,7 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
     const date = event.value;
 
     if (this.selected instanceof DateRange ||
-        (date && !this._dateAdapter.sameDate(date, this.selected, this.getUnit()))) {
+      (date && !this._dateAdapter.sameDate(date, this.selected, this.getUnit()))) {
       this.selectedChange.emit(date);
     }
 
@@ -584,7 +584,7 @@ export class MatCalendar<D> implements AfterContentInit, AfterViewChecked, OnDes
       this._dateSelected(event);
     } else {
       this.selectedChange.emit(event.value);
-      this._goToDateInView(event.value,  'hour');
+      this._goToDateInView(event.value, 'hour');
     }
   }
 

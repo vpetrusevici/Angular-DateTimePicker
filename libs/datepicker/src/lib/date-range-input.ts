@@ -23,23 +23,23 @@ import {
   SimpleChanges,
   isDevMode,
 } from '@angular/core';
-import {MatFormFieldControl, MatFormField, MAT_FORM_FIELD} from '@angular/material/form-field';
-import {ThemePalette} from '@angular/material/core';
-import {NgControl, ControlContainer} from '@angular/forms';
-import {Subject, merge, Subscription} from 'rxjs';
-import {coerceBooleanProperty, BooleanInput} from '@angular/cdk/coercion';
-import {DateAdapter} from '@matheo/datepicker/core';
+import { MatFormFieldControl, MatFormField, MAT_FORM_FIELD } from '@angular/material/form-field';
+import { ThemePalette } from '@angular/material/core';
+import { NgControl, ControlContainer } from '@angular/forms';
+import { Subject, merge, Subscription } from 'rxjs';
+import { coerceBooleanProperty, BooleanInput } from '@angular/cdk/coercion';
+import { DateAdapter } from '../core';
 import {
   MatStartDate,
   MatEndDate,
   MatDateRangeInputParent,
   MAT_DATE_RANGE_INPUT_PARENT,
 } from './date-range-input-parts';
-import {MatDatepickerControl, MatDatepickerPanel} from './datepicker-base';
-import {createMissingDateImplError} from './datepicker-errors';
-import {DateFilterFn, dateInputsHaveChanged} from './datepicker-input-base';
-import {MatDateRangePickerInput} from './date-range-picker';
-import {DateRange, MatDateSelectionModel} from './date-selection-model';
+import { MatDatepickerControl, MatDatepickerPanel } from './datepicker-base';
+import { createMissingDateImplError } from './datepicker-errors';
+import { DateFilterFn, dateInputsHaveChanged } from './datepicker-input-base';
+import { MatDateRangePickerInput } from './date-range-picker';
+import { DateRange, MatDateSelectionModel } from './date-selection-model';
 
 let nextUniqueId = 0;
 
@@ -63,8 +63,8 @@ let nextUniqueId = 0;
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   providers: [
-    {provide: MatFormFieldControl, useExisting: MatDateRangeInput},
-    {provide: MAT_DATE_RANGE_INPUT_PARENT, useExisting: MatDateRangeInput},
+    { provide: MatFormFieldControl, useExisting: MatDateRangeInput },
+    { provide: MAT_DATE_RANGE_INPUT_PARENT, useExisting: MatDateRangeInput },
   ]
 })
 export class MatDateRangeInput<D> implements MatFormFieldControl<DateRange<D>>,
