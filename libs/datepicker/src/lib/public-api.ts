@@ -41,4 +41,3 @@ export * from './date-selection-model';
 export { MatStartDate, MatEndDate } from './date-range-input-parts';
 export { MatMultiYearView } from './multi-year-view';
 export * from './datepicker-actions';
-export * from '../luxon'

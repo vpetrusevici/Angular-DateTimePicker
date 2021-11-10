@@ -6,33 +6,33 @@
  * found in the LICENSE file at https://angular.io/license
  */
 
-import {A11yModule} from '@angular/cdk/a11y';
-import {OverlayModule} from '@angular/cdk/overlay';
-import {PortalModule} from '@angular/cdk/portal';
-import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDialogModule} from '@angular/material/dialog';
-import {CdkScrollableModule} from '@angular/cdk/scrolling';
-import {MatCommonModule} from '@angular/material/core';
-import {MatCalendar, MatCalendarHeader} from './calendar';
-import {MatCalendarBody} from './calendar-body';
-import {MatDatepicker} from './datepicker';
+import { A11yModule } from '@angular/cdk/a11y';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CdkScrollableModule } from '@angular/cdk/scrolling';
+import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
+import { MatCalendar, MatCalendarHeader } from './calendar';
+import { MatCalendarBody } from './calendar-body';
+import { MatDatepicker } from './datepicker';
 import {
   MatDatepickerContent,
   MAT_DATEPICKER_SCROLL_STRATEGY_FACTORY_PROVIDER,
 } from './datepicker-base';
-import {MatDatepickerInput} from './datepicker-input';
-import {MatDatepickerIntl} from './datepicker-intl';
-import {MatDatepickerToggle, MatDatepickerToggleIcon} from './datepicker-toggle';
-import {MatClockView} from './clock-view';
-import {MatMonthView} from './month-view';
-import {MatMultiYearView} from './multi-year-view';
-import {MatYearView} from './year-view';
-import {MatDateRangeInput} from './date-range-input';
-import {MatStartDate, MatEndDate} from './date-range-input-parts';
-import {MatDateRangePicker} from './date-range-picker';
-import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './datepicker-actions';
+import { MatDatepickerInput } from './datepicker-input';
+import { MatDatepickerIntl } from './datepicker-intl';
+import { MatDatepickerToggle, MatDatepickerToggleIcon } from './datepicker-toggle';
+import { MatClockView } from './clock-view';
+import { MatMonthView } from './month-view';
+import { MatMultiYearView } from './multi-year-view';
+import { MatYearView } from './year-view';
+import { MatDateRangeInput } from './date-range-input';
+import { MatStartDate, MatEndDate } from './date-range-input-parts';
+import { MatDateRangePicker } from './date-range-picker';
+import { MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel } from './datepicker-actions';
 
 
 @NgModule({
@@ -43,6 +43,7 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     OverlayModule,
     A11yModule,
     PortalModule,
+    MatNativeDateModule,
     MatCommonModule,
   ],
   exports: [
@@ -97,4 +98,4 @@ import {MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel} from './d
     MatCalendarHeader,
   ]
 })
-export class MatDatepickerModule {}
+export class MatDatepickerModule { }
