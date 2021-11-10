@@ -14,7 +14,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CdkScrollableModule } from '@angular/cdk/scrolling';
-import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
+import { MatCommonModule } from '@angular/material/core';
 import { MatCalendar, MatCalendarHeader } from './calendar';
 import { MatCalendarBody } from './calendar-body';
 import { MatDatepicker } from './datepicker';
@@ -33,6 +33,7 @@ import { MatDateRangeInput } from './date-range-input';
 import { MatStartDate, MatEndDate } from './date-range-input-parts';
 import { MatDateRangePicker } from './date-range-picker';
 import { MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel } from './datepicker-actions';
+import { MatNativeDateModule } from '../core';
 
 
 @NgModule({
@@ -43,8 +44,8 @@ import { MatDatepickerActions, MatDatepickerApply, MatDatepickerCancel } from '.
     OverlayModule,
     A11yModule,
     PortalModule,
-    MatNativeDateModule,
     MatCommonModule,
+    MatNativeDateModule
   ],
   exports: [
     CdkScrollableModule,
